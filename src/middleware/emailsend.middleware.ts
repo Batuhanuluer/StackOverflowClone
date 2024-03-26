@@ -21,18 +21,18 @@ export class EmailSend {
         const verificationLink = `http://localhost:3000/user/verify/${token}`
         // E-posta gönderme işlemi
         const mailOptions = {
-            from: 'your-email@gmail.com', // Gönderen e-posta adresi
-            to: email, // Alıcı e-posta adresi
-            subject: 'Hesap Doğrulama', // E-posta konusu
-            html: `<p>Hesabınızı doğrulamak için <a href="${verificationLink}">buraya tıklayın</a></p>` // HTML içeriği
+            from: 'company_mail@gmail.com', 
+            to: email, 
+            subject: 'Account Verification', 
+            html: `<p>Click Here to verify your account <a href="${verificationLink}"></a></p>`
         };
 
         try {
             await this.transporter.sendMail(mailOptions);
-            console.log('E-posta gönderildi:', email);
+            console.log('Email sent:', email);
         } catch (error) {
-            console.error('E-posta gönderirken hata oluştu:', error);
-            throw new Error('E-posta gönderirken bir hata oluştu');
+            console.error('An error occurred while sending email :', error);
+            throw new Error('An error occurred while sending email');
         }
     }
 }
