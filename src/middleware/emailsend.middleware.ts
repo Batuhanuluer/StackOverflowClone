@@ -1,15 +1,18 @@
 import * as nodemailer from 'nodemailer';
+import * as dotenv from 'dotenv';
+
 
 export class EmailSend {
     private transporter: nodemailer.Transporter;
 
     constructor() {
+        dotenv.config(); // dotenv modülünü kullanarak .env dosyasını yükle
         // E-posta gönderimi için transporter oluştur
         this.transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
-                user: 'batuhanuluer1856@gmail.com', // Gönderen e-posta adresi
-                pass: 'ftut kowh mexp idye'
+                user: `${process.env.EMAIL}`, // Gönderen e-posta adresi
+                pass: `${process.env.EMAIL_PASSWORD}`
             }
         });
     }
