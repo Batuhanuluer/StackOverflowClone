@@ -6,8 +6,8 @@ export class EmailSend {
     private transporter: nodemailer.Transporter;
 
     constructor() {
-        dotenv.config(); // dotenv modülünü kullanarak .env dosyasını yükle
-        // E-posta gönderimi için transporter oluştur
+        dotenv.config();
+
         this.transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -19,7 +19,6 @@ export class EmailSend {
 
      async sendVerificationEmail(email: string, token: string): Promise<void> {
         const verificationLink = `http://localhost:3000/user/verify/${token}`
-        // E-posta gönderme işlemi
         const mailOptions = {
             from: 'company_mail@gmail.com', 
             to: email, 

@@ -6,7 +6,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const csp = require('helmet-csp');
 
-// CSP ayarlarını yapılandırma
+
   app.use(csp({
     directives: {
       defaultSrc: ["'self'"], // Sayfa içeriğinin varsayılan kaynağı
